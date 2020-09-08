@@ -53,8 +53,8 @@ schema_view = get_swagger_view(title='Farm Employee Management API' ,url='/docs'
 
 urlpatterns = {
     url(r'department', DepartmentListView.as_view(), name='list'),
-    url(r'^employee', EmployeeCreateView.as_view(), name='add'),
-    url(r'employee', EmployeeCreateView.as_view(), name='list'),
+    url(r'^employee+1', EmployeeCreateView.as_view(), name='add'),
+    url(r'employeeview', EmployeeCreateView.as_view(), name='list'),
     url(r'employee(?P<pk>[0-9]+)/$', EmployeeDeleteView.as_view(), name='remove'),
     url(r'docs', schema_view),
 }
