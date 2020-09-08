@@ -63,6 +63,15 @@ class SwaggerSchemaView(APIView):
         schema = generator.get_schema(request=request)
         return response.Response(schema)
 
+        
+    def post(self, request, *args, **kwargs):
+        serializer = EmployeeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return response.Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class DepartmentListView(generics.ListAPIView):
     """Define service to get departments list"""
