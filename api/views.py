@@ -13,6 +13,19 @@ from api.serializers import DepartmentSerializer, EmployeeSerializer
 class JSONOpenAPIRender(renderers.OpenAPIRenderer):
     media_type = 'application/json'
 
+
+class EmployeeCreateView(generics.CreateAPIView):
+    """
+    get:
+    Return a list of all employees.
+
+    post:
+    Create a new employee.
+    """
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
 def get_swagger_view(title=None, url=None, patterns=None, urlconf=None):
     """
     Returns schema view which renders Swagger/OpenAPI.
