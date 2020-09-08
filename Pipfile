@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Django = "==1.11.2"
+djangorestframework = "==3.6.3"
+python-decouple = "==3.0"
+pytz = "==2017.2"
+gunicorn = "*"
+django-extensions = "==1.7.9"
+django-rest-swagger = "==2.1.2"
+coreapi = "==2.3.1"
+coreschema = "==0.0.4"
+Pygments = "==2.2.0"
+Markdown = "==2.6.8"
+django-heroku = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
