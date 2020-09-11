@@ -3,14 +3,14 @@
 Module to serialize models into JSON format.
 """
 from rest_framework import serializers
-from .models import Employee, Department
+from .models import Employee, Duty
 
 
-class DepartmentSerializer(serializers.ModelSerializer):
-    """Department JSON serializer"""
+class DutySerializer(serializers.ModelSerializer):
+    """Duty JSON serializer"""
 
     class Meta:
-        model = Department
+        model = Duty
         fields = ('code', 'name')
 
 
@@ -19,7 +19,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ('pk', 'name', 'email', 'department')
+        fields = ('pk', 'name', 'email', 'duty')
 
     def create(self, validated_data):
         employee = Employee.objects.create(**validated_data)

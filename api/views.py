@@ -7,8 +7,8 @@ from rest_framework.schemas import SchemaGenerator
 from rest_framework.views import APIView
 from rest_framework_swagger import renderers
 
-from api.models import Department, Employee
-from api.serializers import DepartmentSerializer, EmployeeSerializer
+from api.models import Duty, Employee
+from api.serializers import DutySerializer, EmployeeSerializer
 
 class JSONOpenAPIRender(renderers.OpenAPIRenderer):
     media_type = 'application/json'
@@ -86,10 +86,10 @@ class SwaggerSchemaView(APIView):
         return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class DepartmentListView(generics.ListAPIView):
-    """Define service to get departments list"""
-    queryset = Department.objects.all()
-    serializer_class = DepartmentSerializer
+class DutyListView(generics.ListAPIView):
+    """Define service to get duty list"""
+    queryset = Duty.objects.all()
+    serializer_class = DutySerializer
 
 
 class EmployeeCreateView(generics.ListCreateAPIView):

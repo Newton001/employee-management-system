@@ -9,7 +9,7 @@ from rest_framework import exceptions
 from rest_framework.permissions import AllowAny
 from rest_framework.schemas import SchemaGenerator
 from rest_framework_swagger import renderers
-from .views import DepartmentListView, EmployeeCreateView, EmployeeDeleteView
+from .views import DutyListView, EmployeeCreateView, EmployeeDeleteView
 
 class JSONOpenAPIRender(renderers.OpenAPIRenderer):
     media_type = 'application/json'
@@ -52,8 +52,8 @@ def get_swagger_view(title=None, url=None, patterns=None, urlconf=None):
 schema_view = get_swagger_view(title='Farm Employee Management API' ,url='/docs')
 
 urlpatterns = {
-    url(r'department', DepartmentListView.as_view(), name='list'),
-    #url(r'employee+1', EmployeeCreateView.as_view(), name='create'),
+    url(r'duty', DutyListView.as_view(), name='list'),
+    url(r'employee+1', EmployeeCreateView.as_view(), name='create'),
     url(r'employeeview', EmployeeCreateView.as_view(), name='list'),
     url(r'employee(?P<pk>[0-9]+)/$', EmployeeDeleteView.as_view(), name='remove'),
     url(r'docs', schema_view),
