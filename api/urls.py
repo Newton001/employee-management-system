@@ -9,7 +9,7 @@ from rest_framework import exceptions
 from rest_framework.permissions import AllowAny
 from rest_framework.schemas import SchemaGenerator
 from rest_framework_swagger import renderers
-from .views import DutyListView, EmployeeCreateView, EmployeeDeleteView
+from .views import DutyListView, EmployeeCreateView, EmployeeDeleteView, TaskCreateView
 
 class JSONOpenAPIRender(renderers.OpenAPIRenderer):
     media_type = 'application/json'
@@ -55,6 +55,7 @@ urlpatterns = {
     url(r'duty', DutyListView.as_view(), name='list'),
     url(r'employee+1', EmployeeCreateView.as_view(), name='create'),
     url(r'employeeview', EmployeeCreateView.as_view(), name='list'),
+    url(r'tasks', TaskCreateView.as_view(), name='list'),
     url(r'employee(?P<pk>[0-9]+)/$', EmployeeDeleteView.as_view(), name='remove'),
     url(r'docs', schema_view),
 }

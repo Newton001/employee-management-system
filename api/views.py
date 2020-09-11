@@ -7,8 +7,8 @@ from rest_framework.schemas import SchemaGenerator
 from rest_framework.views import APIView
 from rest_framework_swagger import renderers
 
-from api.models import Duty, Employee
-from api.serializers import DutySerializer, EmployeeSerializer
+from api.models import Duty, Employee, Task
+from api.serializers import DutySerializer, EmployeeSerializer, TaskSerializer
 
 class JSONOpenAPIRender(renderers.OpenAPIRenderer):
     media_type = 'application/json'
@@ -58,6 +58,19 @@ def get_swagger_view(title=None, url=None, patterns=None, urlconf=None):
             return Response(schema)
 
     return SwaggerSchemaView.as_view()
+
+
+
+class TaskCreateView(generics.ListCreateAPIView):
+    """
+    get:
+    Returns tasks allocated to employees
+
+    post:
+    Assigns task.
+    """
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
 
 

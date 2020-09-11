@@ -3,7 +3,7 @@
 Module to serialize models into JSON format.
 """
 from rest_framework import serializers
-from .models import Employee, Duty
+from .models import Employee, Duty, Task
 
 
 class DutySerializer(serializers.ModelSerializer):
@@ -25,3 +25,15 @@ class EmployeeSerializer(serializers.ModelSerializer):
         employee = Employee.objects.create(**validated_data)
         employee.save()
         return employee
+
+class TaskSerializer(serializers.ModelSerializer):
+    """Task JSON serializer"""
+
+    class Meta:
+        model = Task
+        fields = ( 'name', 'pk',)
+
+    def create(self, validated_data):
+        task = Task.objects.create(**validated_data)
+        task.save()
+        return task
